@@ -171,10 +171,33 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                <div class="row mt-3">
+                    <div class="form-group col-11">
+                    </div>
+                    <div class="form-group col-1">
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            Livewire.on('saved', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Data berhasil disimpan',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                }).then(() => {
+                    location.reload();
+                });
+            });
+        });
+    </script>

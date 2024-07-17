@@ -120,7 +120,6 @@ class PenerimaanBarang extends Component
             } else {
                 $fields['harga_beli'] = $this->harga_beli;
             }
-            //dd($fields);
             $penerimaan = Penerimaan::create($fields);
     
             $items = [];
@@ -136,7 +135,7 @@ class PenerimaanBarang extends Component
                 $penerimaan->items()->create($item);
             }
         });
-
+        $this->emit('saved');
 
     }
 

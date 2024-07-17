@@ -26,8 +26,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function welcome()
+    public function penerimaan()
     {
-        return view('welcome');
+        return view('form');
     }
 }

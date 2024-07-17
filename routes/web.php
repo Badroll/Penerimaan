@@ -18,29 +18,15 @@ use App\Http\Livewire\PenerimaanBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/penerimaan-barang', PenerimaanBarang::class);
-// });
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/penerimaan-barang', [App\Http\Controllers\HomeController::class, 'welcome']);
+Route::get('/', function () {
+    return view("welcome");
+});
+Route::get('home', function () {
+    return view("welcome");
 });
 
-Route::post('/file-upload', function (Request $request) {
-    $request->validate([
-        'photo' => 'required|image|max:2048',
-    ]);
-
-    $path = $request->file('photo')->store('photos', 'public');
-
-    return response()->json(['fileName' => $path]);
-})->name('file.upload');
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/penerimaan', [App\Http\Controllers\HomeController::class, 'penerimaan'])->name("penerimaan");
+});
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
